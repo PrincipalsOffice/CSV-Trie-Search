@@ -19,5 +19,4 @@ def index():
 @app.route('/autocomplete')
 def autocomplete():
     query = request.args.get('query')
-    # TODO: add lazy loading for the csv file
     return jsonify(trie.start_with(query))

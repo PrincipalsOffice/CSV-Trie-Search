@@ -42,8 +42,8 @@
             }
         });
 
-        var submit = document.getElementById('submit');
-        var urlInput = document.getElementById('urlInput');
+        var submit = document.getElementById("submit");
+        var urlInput = document.getElementById("urlInput");
         var urlList = document.getElementById("urlList");
         submit.onclick = function() {
             // If an exact match is found, redirect
@@ -53,7 +53,10 @@
                 urlList.innerHTML = "";
                 queryResponse.forEach(function(item) {
                     var li = document.createElement("li");
-                    li.innerHTML = item;
+                    var anchor = document.createElement("a");
+                    anchor.setAttribute("href", "//" + item);
+                    anchor.innerHTML  = item;
+                    li.appendChild(anchor);
                     urlList.appendChild(li);
                 });
             }

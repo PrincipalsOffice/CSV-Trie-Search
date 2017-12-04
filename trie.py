@@ -5,7 +5,7 @@ class Node():
 
     def __init__(self):
         self.data = None
-        self.children = {}
+        self.children = {} # THOGUHT: could use OrderedDict to show results in a-z order
 
 
 class Trie():
