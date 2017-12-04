@@ -15,3 +15,8 @@ I assume that you have `git` and `python` installed.
     flask run
 
 Visit http://127.0.0.1:5000/ to test out the functionalities.
+
+
+## Design considerations
+I chose the Python3+Flask stack since it's what I am most familiar with for prototyping.
+Due to time constraints, I was focused on delivering the required features, and there are certainly many parts that can be improved.
