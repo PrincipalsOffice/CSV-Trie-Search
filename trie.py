@@ -1,6 +1,3 @@
-import csv
-
-
 class Node():
 
     def __init__(self):
@@ -37,16 +34,3 @@ class Trie():
             queue += [node for key, node in current_node.children.items()]
 
         return words
-
-if __name__ == '__main__':
-    '''testing, read 500 rows'''
-    trie = Trie()
-    count = 0
-    with open('top-1m.csv', 'r') as f:
-        reader = csv.reader(f)
-        for row in reader:
-            trie.insert(row[1])
-            count += 1
-            if count > 500:
-                break
-    print(trie.start_with('tw'))
