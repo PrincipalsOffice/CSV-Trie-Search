@@ -6,32 +6,58 @@
         URL Autocomplete
     </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/JavaScript-autoComplete/1.0.4/auto-complete.min.css" />
+    <style type="text/css">
+        #urlInput {
+            width: 200px;
+        }
+    </style>
 </head>
 <body>
     URL: <input type="text" name="urlInput" id="urlInput" list="urlList">
     <br/>
-    <input type="submit">
+    <input id="submit" type="submit">
+    <ul id="urlList">
+    </ul>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/JavaScript-autoComplete/1.0.4/auto-complete.min.js"></script>
     <script type="text/javascript">
         var xhr = new XMLHttpRequest();
+        var queryResponse = [];
         new autoComplete({
             selector: "#urlInput",
             source: function(term, response){
                 try { xhr.abort(); } catch(e){} // abort any pending requests
                 xhr.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
-                        response(JSON.parse( this.responseText )); 
+                        queryResponse = JSON.parse( this.responseText );
+                        // render response to dropdown
+                        response(queryResponse); 
                     }
                 };
                 xhr.open("GET", "/autocomplete?query=" + term, true);
                 xhr.send();
             },
             onSelect: function(e, term, item){
+                // redirect url on select
                 window.location.href = "//" + term;
             }
         });
-        // TODO: modify font to reasonable size
-        // TODO: handle cases for submit
+
+        var submit = document.getElementById('submit');
+        var urlInput = document.getElementById('urlInput');
+        var urlList = document.getElementById("urlList");
+        submit.onclick = function() {
+            // If an exact match is found, redirect
+            if (queryResponse.indexOf(urlInput.value) >= 0) {
+                window.location.href = "//" + urlInput.value;
+            } else {
+                urlList.innerHTML = "";
+                queryResponse.forEach(function(item) {
+                    var li = document.createElement("li");
+                    li.innerHTML = item;
+                    urlList.appendChild(li);
+                });
+            }
+        };
     </script>
 </body>
 </html>

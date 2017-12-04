@@ -23,4 +23,5 @@ def index():
 @app.route('/autocomplete')
 def autocomplete():
     query = request.args.get('query')
+    # TODO: limit number of records start_with() returns
     return jsonify(trie.start_with(query))
