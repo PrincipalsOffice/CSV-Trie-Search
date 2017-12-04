@@ -1,3 +1,6 @@
+RESULT_LITMIT = 10 # TODO: read it from ENV variable
+
+
 class Node():
 
     def __init__(self):
@@ -21,13 +24,17 @@ class Trie():
     def start_with(self, prefix):
         words = list()
         node = self.root
+
+        # locate the position of the last letter in the prefix
         for letter in prefix:
             if letter in node.children:
                 node = node.children[letter]
             else:
                 return words
         queue = [node]
-        while queue:
+
+        # do a BFS to find the words with the provided prefix
+        while queue and len(words) < RESULT_LITMIT:
             current_node = queue.pop()
             if current_node.data != None:
                 words.append(current_node.data)
