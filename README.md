@@ -31,6 +31,6 @@ Backend:
         - I set a limit of 10 to the max number of words return by the Trie's `start_with()` method to improve the overall user experience.
         - In `start_with()`, I used BFS to traverse the trie so we can return results that are closest to the input length.
         
-    server.py: A flask web server with 2 simple endpoints:
-        `http://127.0.0.1:5000/`: servers the html/js/css
-        `http://127.0.0.1:5000/autocomplete`: takes a `query` param and return up to 10 suggestion results.
+    - server.py: A flask web server with 2 simple endpoints:
+        - `http://127.0.0.1:5000/`: servers the html/js/css
+        - `http://127.0.0.1:5000/autocomplete`: takes a `query` param and return up to 10 suggestion results.
