@@ -24,6 +24,7 @@ Due to time constraints, I was focused on delivering the required features, and 
 
 
 Backend:
+The server would load the csv into a trie in memory.
 
     - trie.py: A simplified version of Trie that only supports `insert()` and `start_with()`.
         - Each TrieNode stores a dictionary of its children Nodes.
