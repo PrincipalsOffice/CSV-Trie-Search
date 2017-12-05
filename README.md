@@ -37,4 +37,4 @@ server.py: A flask web server with 2 simple endpoints:
 *  `http://127.0.0.1:5000/autocomplete`: takes a `query` param and return up to 10 suggestion results.
 
 Frontend:
-A very barebone html/js page with an input and a submit button. Initially I was trying to utilize the `<datalist>` html tag for displaying the automcomplete options, but since `<option>` does not support binding to onclick events, I could not achieve the "click and redirect" feature requirement with just `<datalist>`. So (again) due to time constraints I used a JS autocomplete library(https://github.com/Pixabay/JavaScript-autoComplete) instead.
+*  `templates/index.html`: A very barebone html/js page with an input and a submit button. Initially I tried to utilize the `<datalist>` html tag for displaying the automcomplete options, but since `<option>` does not support binding to onclick events, I could not achieve the "click and redirect" feature requirement with just `<datalist>`. So (again) due to time constraints I used a JS autocomplete library(https://github.com/Pixabay/JavaScript-autoComplete) instead.
