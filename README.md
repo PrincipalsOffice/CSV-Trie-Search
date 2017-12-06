@@ -20,9 +20,6 @@ Visit http://127.0.0.1:5000/ to test out the functionalities.
 ## Design considerations
 I chose the Python3+Flask stack since it's what I am most familiar with for prototyping. Instead of loading the datasets into a database, I implemented a simple in-menory trie.
 
-Due to time constraints, I was focused on delivering the required features, and there are certainly many parts that can be improved (e.g. validation, error checking).
-
-
 Backend:
 The server would load the csv into a trie in memory during startup, so it might take a while (~2 mins).
 
@@ -38,3 +35,8 @@ server.py: A flask web server with 2 simple endpoints:
 
 Frontend:
 *  `templates/index.html`: A very barebone html/js page with an input and a submit button. Initially I tried to utilize the `<datalist>` html tag for displaying the automcomplete options, but since `<option>` does not support binding to onclick events, I could not achieve the "click and redirect" feature requirement with just `<datalist>`. So (again) due to time constraints I used a JS autocomplete library(https://github.com/Pixabay/JavaScript-autoComplete) instead.
+
+TODO:
+* Input validation 
+* Unit tests
+* Full text search? (suffix tree?)
